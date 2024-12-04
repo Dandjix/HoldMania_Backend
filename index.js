@@ -7,6 +7,7 @@ const port = 3000
 
 const holdRoutes = require('./routes/holdRoutes')
 const orderRoutes = require('./routes/orderRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 app.use(express.json())
 
@@ -17,3 +18,4 @@ app.listen(port,() => {
 
 app.use('/holds',holdRoutes)
 app.use('/orders',orderRoutes)
+app.use('/users',userRoutes)

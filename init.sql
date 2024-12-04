@@ -45,6 +45,7 @@ CREATE TABLE CLIENT (
     lastName VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     dateOfBirth DATE NOT NULL,
+    phoneNumber VARCHAR(10) UNIQUE,
     idClientLevel INT NOT NULL,
     FOREIGN KEY (idClientLevel) REFERENCES CLIENT_LEVEL(idClientLevel)
 );
@@ -76,10 +77,10 @@ INSERT INTO CLIENT_LEVEL (clientLevelName) VALUES
 ('Advanced');
 
 -- Insert data into CLIENT
-INSERT INTO CLIENT (firstName, lastName, email, dateOfBirth, idClientLevel) VALUES 
-('John', 'Doe', 'john.doe@example.com', '1990-01-15', 1),
-('Jane', 'Smith', 'jane.smith@example.com', '1985-06-20', 2),
-('Alice', 'Brown', 'alice.brown@example.com', '2000-09-05', 3);
+INSERT INTO CLIENT (firstName, lastName, email, dateOfBirth,phoneNumber, idClientLevel) VALUES 
+('John', 'Doe', 'john.doe@example.com', '1990-01-15','0769241429', 1),
+('Jane', 'Smith', 'jane.smith@example.com','1985-06-20','0752915211',  2),
+('Alice', 'Brown', 'alice.brown@example.com','2000-09-05','0613131313',  3);
 
 -- Insert data into HOLD_TYPE
 INSERT INTO HOLD_TYPE (holdTypeName) VALUES 
@@ -167,3 +168,12 @@ WHERE idOrder = 1 AND idHold =1
 DELETE FROM ORDER_LINE WHERE idOrder= 1 AND idHold = 2;
 
 SELECT * FROM ORDER_LINE;
+
+UPDATE `ORDER` SET isSent = true WHERE idOrder = 1;
+
+SELECT isSent FROM `ORDER` WHERE idOrder = 1;
+
+SELECT idClient,firstName,lastName,email,dateOfBirth,phoneNumber, clientLevelName
+FROM CLIENT 
+LEFT JOIN CLIENT_LEVEL ON  CLIENT.idClientLevel = CLIENT_LEVEL.idClientLevel
+WHERE idClient = 1;
