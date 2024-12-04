@@ -46,6 +46,7 @@ CREATE TABLE CLIENT (
     email VARCHAR(100) NOT NULL UNIQUE,
     dateOfBirth DATE NOT NULL,
     phoneNumber VARCHAR(10) UNIQUE,
+    profilePictureURL VARCHAR(100),
     idClientLevel INT NOT NULL,
     FOREIGN KEY (idClientLevel) REFERENCES CLIENT_LEVEL(idClientLevel)
 );
@@ -77,10 +78,10 @@ INSERT INTO CLIENT_LEVEL (clientLevelName) VALUES
 ('Advanced');
 
 -- Insert data into CLIENT
-INSERT INTO CLIENT (firstName, lastName, email, dateOfBirth,phoneNumber, idClientLevel) VALUES 
-('John', 'Doe', 'john.doe@example.com', '1990-01-15','0769241429', 1),
-('Jane', 'Smith', 'jane.smith@example.com','1985-06-20','0752915211',  2),
-('Alice', 'Brown', 'alice.brown@example.com','2000-09-05','0613131313',  3);
+INSERT INTO CLIENT (firstName, lastName, email, dateOfBirth,phoneNumber,profilePictureURL, idClientLevel) VALUES 
+('John', 'Doe', 'john.doe@orange.fr', '1990-01-15','0769241429','john.png', 1),
+('Jane', 'Smith', 'jane.smith@outlook.com','1985-06-20','0752915211','invalid.png',  2),
+('Alice', 'Brown', 'alicebrown12@gmail.com','2000-09-05','0613131313','alice.png',  3);
 
 -- Insert data into HOLD_TYPE
 INSERT INTO HOLD_TYPE (holdTypeName) VALUES 

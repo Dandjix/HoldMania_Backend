@@ -6,7 +6,7 @@ const conn = require('../mysqlConnection')
 router.get("/",(req,res) =>{
     const {idClient} = req.query
 
-    conn.query(`SELECT idClient,firstName,lastName,email,dateOfBirth,phoneNumber, clientLevelName
+    conn.query(`SELECT idClient,firstName,lastName,email,dateOfBirth,phoneNumber, clientLevelName, profilePictureURL
         FROM CLIENT 
         LEFT JOIN CLIENT_LEVEL ON  CLIENT.idClientLevel = CLIENT_LEVEL.idClientLevel
         WHERE idClient = ?;`,
@@ -31,7 +31,7 @@ router.get("/",(req,res) =>{
 router.get("/connectByEmail",(req,res) =>{
     const {email} = req.query
 
-    conn.query(`SELECT idClient,firstName,lastName,email,dateOfBirth,phoneNumber, clientLevelName
+    conn.query(`SELECT idClient,firstName,lastName,email,dateOfBirth,phoneNumber, clientLevelName, profilePictureURL
         FROM CLIENT 
         LEFT JOIN CLIENT_LEVEL ON  CLIENT.idClientLevel = CLIENT_LEVEL.idClientLevel
         WHERE email = ?;`,

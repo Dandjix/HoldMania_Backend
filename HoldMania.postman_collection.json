@@ -216,7 +216,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/users/connectByEmail?email=john.doe@example.com",
+					"raw": "http://localhost:3000/users/connectByEmail?email=john.doe@orange.fr",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -229,7 +229,7 @@
 					"query": [
 						{
 							"key": "email",
-							"value": "john.doe@example.com"
+							"value": "john.doe@orange.fr"
 						}
 					]
 				}
