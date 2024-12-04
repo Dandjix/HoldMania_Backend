@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
+const orderIsNotSent = require('../middlewares/order/orderIsNotSent')
+
 const conn = require('../mysqlConnection')
 
 router.get('/:idUser',(req,res)=>
@@ -11,6 +13,7 @@ router.get('/:idUser',(req,res)=>
         SELECT 
             O.idOrder,
             O.dateOrder,
+            O.isSent,
             SUM(H.price * OL.quantity) AS totalOrderPrice,
             SUM(OL.quantity) AS totalNumberOfHolds
         FROM \`ORDER\` O
@@ -52,7 +55,7 @@ router.get('/lines/:idOrder',(req,res)=>{
         })
 })
 
-router.post('/lines',(req,res)=>
+router.post('/lines',orderIsNotSent,(req,res)=>
 {
     let {idOrder,idHold, quantity} = req.query
 
@@ -73,7 +76,7 @@ router.post('/lines',(req,res)=>
     })
 })
 
-router.patch('/lines',(req,res)=>
+router.patch('/lines',orderIsNotSent,(req,res)=>
 {
     const {idOrder,idHold,quantity} = req.query
 
@@ -94,7 +97,7 @@ router.patch('/lines',(req,res)=>
     })
 })
 
-router.delete('/lines',(req,res)=>
+router.delete('/lines',orderIsNotSent,(req,res)=>
 {
     const {idOrder,idHold} = req.query
     conn.query(`DELETE FROM ORDER_LINE WHERE idOrder= ? AND idHold = ?;`,[idOrder,idHold],(err,result)=>{
@@ -104,6 +107,19 @@ router.delete('/lines',(req,res)=>
             return
         }
         res.status(200).json({message:"Line deleted successfully"})
+    })
+})
+//route to send an order
+router.patch('/',orderIsNotSent,(req,res)=>
+{
+    const {idOrder} =req.query
+    conn.query(`UPDATE \`ORDER\` SET isSent = true WHERE idOrder = ?;`,[idOrder],(err,result)=>{
+        if(err)
+        {
+            console.error("error : "+err);
+            return
+        }
+        res.status(200).json({message:"Order sent successfully"})
     })
 })
 

@@ -27,7 +27,7 @@ router.get('/',(req,res) => {
         if(err)
         {
             console.error("error : "+err)
-            res.status(500)
+            res.status(500).json({error:err})
             return
         }
         res.send(result)
