@@ -170,6 +170,10 @@ DELETE FROM ORDER_LINE WHERE idOrder= 1 AND idHold = 2;
 
 SELECT * FROM ORDER_LINE;
 
+SELECT * FROM `ORDER`;
+
+SELECT COUNT(idOrder) FROM `ORDER` WHERE idUser=1 AND isSent=False;
+
 UPDATE `ORDER` SET isSent = true WHERE idOrder = 1;
 
 SELECT isSent FROM `ORDER` WHERE idOrder = 1;
@@ -178,3 +182,6 @@ SELECT idClient,firstName,lastName,email,dateOfBirth,phoneNumber, clientLevelNam
 FROM CLIENT 
 LEFT JOIN CLIENT_LEVEL ON  CLIENT.idClientLevel = CLIENT_LEVEL.idClientLevel
 WHERE idClient = 1;
+
+
+SELECT * FROM `ORDER`;

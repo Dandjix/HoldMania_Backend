@@ -2,8 +2,10 @@ const express = require('express')
 const router = express.Router()
 
 const orderIsNotSent = require('../middlewares/order/orderIsNotSent')
+const cartDoesntExist = require('../middlewares/order/cartDoesNotExist')
 
 const conn = require('../mysqlConnection')
+
 
 router.get('/:idUser',(req,res)=>
 {
@@ -17,8 +19,8 @@ router.get('/:idUser',(req,res)=>
             SUM(H.price * OL.quantity) AS totalOrderPrice,
             SUM(OL.quantity) AS totalNumberOfHolds
         FROM \`ORDER\` O
-        JOIN ORDER_LINE OL ON O.idOrder = OL.idOrder
-        JOIN HOLD H ON OL.idHold = H.idHold
+        LEFT JOIN ORDER_LINE OL ON O.idOrder = OL.idOrder
+        LEFT JOIN HOLD H ON OL.idHold = H.idHold
         WHERE O.idUser = ?
         GROUP BY O.idOrder, O.dateOrder;`
         ,
@@ -34,6 +36,21 @@ router.get('/:idUser',(req,res)=>
             res.send(result)
     })
 })
+
+router.post('/:idUser',cartDoesntExist,async (req,res)=>
+    {
+        const idUser = req.params.idUser;
+
+        try {
+            const query = `INSERT INTO \`ORDER\` (idUser, dateOrder) VALUES (?, CURDATE())`;
+            const {insertId} = (await conn.promise().query(query, [idUser]))[0]; // Use a promise-based version of your query method
+            res.status(200).json({ message: "Order created successfully",idOrder:insertId });
+        } catch (err) {
+            console.error("Error in creating the order: ", err);
+            res.status(500).json({ error: err.message });
+            return;
+        }
+    })
 
 router.get('/lines/:idOrder',(req,res)=>{
     const idOrder = req.params.idOrder
