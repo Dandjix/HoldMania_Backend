@@ -37,6 +37,28 @@ router.get('/:idUser',(req,res)=>
     })
 })
 
+router.post('/lines',orderIsNotSent,(req,res)=>
+    {
+        let {idOrder,idHold, quantity} = req.query
+    
+        if(!quantity)
+            quantity = 1
+    
+        conn.query(
+            `INSERT INTO ORDER_LINE (idOrder, idHold, quantity) VALUES 
+            (?, ?, ?);`,
+            [idOrder,idHold,quantity],(err,result)=>{
+            if(err)
+            {
+                console.error("error : "+err);
+                res.status(500).json({error:err})
+                return
+            }
+            res.status(200).json({message:"Line added successfully"})
+        })
+    })
+
+
 router.post('/:idUser',cartDoesntExist,async (req,res)=>
     {
         const idUser = req.params.idUser;
@@ -70,27 +92,6 @@ router.get('/lines/:idOrder',(req,res)=>{
             }
             res.send(result)
         })
-})
-
-router.post('/lines',orderIsNotSent,(req,res)=>
-{
-    let {idOrder,idHold, quantity} = req.query
-
-    if(!quantity)
-        quantity = 1
-
-    conn.query(
-        `INSERT INTO ORDER_LINE (idOrder, idHold, quantity) VALUES 
-        (?, ?, ?);`,
-        [idOrder,idHold,quantity],(err,result)=>{
-        if(err)
-        {
-            console.error("error : "+err);
-            res.status(500).json({error:err})
-            return
-        }
-        res.status(200).json({message:"Line added successfully"})
-    })
 })
 
 router.patch('/lines',orderIsNotSent,(req,res)=>
