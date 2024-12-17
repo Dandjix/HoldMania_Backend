@@ -101,11 +101,11 @@ INSERT INTO HOLD_COLOR (holdColorName) VALUES
 
 -- Insert data into HOLD
 INSERT INTO HOLD (holdName, idHoldType, idHoldColor, idClientLevel,price, weight, sizeMeters, imageURL) VALUES 
-("Hold1",1, 1, 1,12, 1.5, 0.3, 'http://example.com/hold1.jpg'),
-("Hold2",2, 2, 2,11.5, 2.0, 0.5, 'http://example.com/hold2.jpg'),
-("Hold3",3, 3, 3,13.99, 0.8, 0.2, 'http://example.com/hold3.jpg'),
-("Hold4",4, 4, 1,9.7, 1.2, 0.4, 'http://example.com/hold4.jpg'),
-("Hold5",5, 5, 2,11, 1.7, 0.6, 'http://example.com/hold5.jpg');
+("La prise du dragon",1, 1, 1,12, 1.5, 0.3, 'dragon'),
+("Prise GAMING",2, 2, 2,11.5, 2.0, 0.5, 'galactique'),
+("Prise infernale",3, 3, 3,13.99, 0.8, 0.2, 'impossible'),
+("Lezard-o-max",4, 4, 1,9.7, 1.2, 0.4, 'lezard'),
+("Slopper glissant af",5, 5, 2,11, 1.7, 0.6, 'lune');
 
 -- Insert data into ORDER
 INSERT INTO `ORDER` (dateOrder, idUser) VALUES 
