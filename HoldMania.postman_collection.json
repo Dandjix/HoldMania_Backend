@@ -12,14 +12,40 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/holds",
+					"raw": "http://192.168.189.7:3000/holds",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"192",
+						"168",
+						"189",
+						"7"
 					],
 					"port": "3000",
 					"path": [
 						"holds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetHolds Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.189.207:3000/holds/2",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"189",
+						"207"
+					],
+					"port": "3000",
+					"path": [
+						"holds",
+						"2"
 					]
 				}
 			},
@@ -31,10 +57,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/orders/1",
+					"raw": "http://192.168.189.7:3000/orders/1",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"192",
+						"168",
+						"189",
+						"7"
 					],
 					"port": "3000",
 					"path": [
@@ -51,10 +80,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/orders/lines/1",
+					"raw": "http://192.168.189.7:3000/orders/lines/1",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"192",
+						"168",
+						"189",
+						"7"
 					],
 					"port": "3000",
 					"path": [

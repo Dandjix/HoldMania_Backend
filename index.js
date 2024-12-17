@@ -13,7 +13,7 @@ app.use(express.json())
 const host = '192.168.189.7'; 
   
 app.listen(port, host,() => {
-    console.log("listening on port 3000");
+    console.log(`listening on port ${port}`);
 })
 
 
