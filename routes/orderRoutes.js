@@ -16,8 +16,8 @@ router.get('/:idUser',(req,res)=>
             O.idOrder,
             O.dateOrder,
             O.isSent,
-            SUM(H.price * OL.quantity) AS totalOrderPrice,
-            SUM(OL.quantity) AS totalNumberOfHolds
+            COALESCE(SUM(H.price * OL.quantity),0) AS totalOrderPrice,
+            COALESCE(SUM(OL.quantity),0) AS totalNumberOfHolds
         FROM \`ORDER\` O
         LEFT JOIN ORDER_LINE OL ON O.idOrder = OL.idOrder
         LEFT JOIN HOLD H ON OL.idHold = H.idHold
