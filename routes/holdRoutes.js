@@ -6,10 +6,10 @@ const conn = require('../mysqlConnection')
 router.get('/',(req,res) => {
     try
     {
-        const {idClientLevels,idColors} = req.query
+        const {idClientLevels,idColors,searchName} = req.query
 
-        console.log(`query values : ${idClientLevels}|${idColors}`);
-        // query values : 1,2,3|1,2
+        console.log(`query values : ${idClientLevels}|${idColors}|${searchName}`);
+        // query values : 1,2,3|1,2|skibidi
     
         let whereConditions = [];
         if (idClientLevels) {
@@ -24,6 +24,10 @@ router.get('/',(req,res) => {
             if (colors.length > 0) {
                 whereConditions.push(`HOLD.idHoldColor IN (${colors.join(',')})`);
             }
+        }
+
+        if(searchName){
+            whereConditions.push(`HOLD.holdName LIKE '%${searchName}%'`)
         }
 
         const whereClause = whereConditions.length > 0 ? `WHERE ${whereConditions.join(' AND ')}` : '';
@@ -47,7 +51,9 @@ router.get('/',(req,res) => {
             LEFT JOIN HOLD_COLOR ON HOLD.idHoldColor = HOLD_COLOR.idHoldColor
             LEFT JOIN HOLD_TYPE ON HOLD.idHoldType = HOLD_TYPE.idHoldType
             LEFT JOIN CLIENT_LEVEL ON HOLD.idClientLevel = CLIENT_LEVEL.idClientLevel
-            ${whereClause};`
+            ${whereClause}
+            ORDER BY HOLD.holdName
+            ;`
             ,(err,result,fields) => {
             if(err)
             {

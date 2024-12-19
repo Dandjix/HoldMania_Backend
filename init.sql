@@ -73,9 +73,9 @@ CREATE TABLE ORDER_LINE (
 -- Inserts
 
 INSERT INTO CLIENT_LEVEL (clientLevelName) VALUES 
-('Beginner'),
-('Intermediate'),
-('Advanced');
+('Débutant'),
+('Amateur'),
+('Professionnel');
 
 -- Insert data into CLIENT
 INSERT INTO CLIENT (firstName, lastName, email, dateOfBirth,phoneNumber,profilePictureURL, idClientLevel) VALUES 
@@ -93,11 +93,11 @@ INSERT INTO HOLD_TYPE (holdTypeName) VALUES
 
 -- Insert data into HOLD_COLOR
 INSERT INTO HOLD_COLOR (holdColorName) VALUES 
-('Red'),
-('Blue'),
-('Green'),
-('Yellow'),
-('Black');
+('Rouge'),
+('Bleue'),
+('Verte'),
+('Jaune'),
+('Noire');
 
 -- Insert data into HOLD
 INSERT INTO HOLD (holdName, idHoldType, idHoldColor, idClientLevel,price, weight, sizeMeters, imageURL) VALUES 
@@ -105,7 +105,42 @@ INSERT INTO HOLD (holdName, idHoldType, idHoldColor, idClientLevel,price, weight
 ("Prise GAMING",2, 2, 2,11.5, 2.0, 0.5, 'galactique'),
 ("Prise infernale",3, 3, 3,13.99, 0.8, 0.2, 'impossible'),
 ("Lezard-o-max",4, 4, 1,9.7, 1.2, 0.4, 'lezard'),
-("Slopper glissant af",5, 5, 2,11, 1.7, 0.6, 'lune');
+("Slopper glissant af",5, 5, 2,11, 1.7, 0.6, 'lune'),
+("Griffon Talon", 1, 1, 1, 12.5, 1.3, 0.4, 'griffon'),
+("Obsidian Fang", 2, 3, 2, 15.0, 1.8, 0.5, 'obsidian'),
+("Crystal Spire", 3, 5, 3, 10.0, 0.9, 0.3, 'crystal'),
+("Meteorite Edge", 4, 2, 1, 13.2, 1.4, 0.6, 'meteorite'),
+("Thunder Grip", 5, 4, 2, 14.7, 1.9, 0.7, 'thunder'),
+("Aqua Ridge", 1, 2, 3, 9.8, 1.1, 0.2, 'aqua'),
+("Scarlet Razor", 2, 1, 1, 12.0, 0.7, 0.3, 'scarlet'),
+("Shadow Hold", 3, 5, 2, 11.6, 1.0, 0.4, 'shadow'),
+("Phantom Grip", 4, 3, 3, 13.5, 1.2, 0.5, 'phantom'),
+("Firestorm", 5, 4, 1, 14.9, 1.6, 0.6, 'firestorm'),
+("Golden Claw", 1, 2, 2, 12.4, 1.5, 0.3, 'golden_claw'),
+("Lunar Edge", 2, 4, 3, 10.5, 1.3, 0.4, 'lunar'),
+("Tidal Grip", 3, 1, 1, 11.2, 1.4, 0.5, 'tidal'),
+("Verdant Spire", 4, 3, 2, 9.9, 0.8, 0.2, 'verdant'),
+("Pyroclastic", 5, 5, 3, 13.8, 1.6, 0.6, 'pyroclastic'),
+("Blazing Hook", 1, 4, 1, 15.0, 1.9, 0.7, 'blazing_hook'),
+("Icy Grip", 2, 2, 2, 12.3, 1.7, 0.5, 'icy'),
+("Storm Clasp", 3, 1, 3, 10.1, 1.0, 0.3, 'storm'),
+("Iron Clutch", 4, 3, 1, 14.2, 1.8, 0.6, 'iron'),
+("Dragon Scale", 5, 5, 2, 9.6, 1.2, 0.4, 'dragon_scale'),
+("Molten Crest", 1, 4, 3, 13.1, 1.3, 0.2, 'molten'),
+("Nimbus Touch", 2, 2, 1, 11.9, 1.5, 0.4, 'nimbus'),
+("Oblivion Grip", 3, 5, 2, 14.8, 1.7, 0.5, 'oblivion'),
+("Aurora Clasp", 4, 3, 3, 12.2, 0.9, 0.3, 'aurora'),
+("Glacial Fang", 5, 1, 1, 10.4, 1.2, 0.6, 'glacial'),
+("Solar Spine", 1, 2, 2, 9.5, 1.8, 0.7, 'solar_spine'),
+("Dusk Edge", 2, 4, 3, 14.6, 1.4, 0.3, 'dusk'),
+("Inferno Grip", 3, 5, 1, 15.2, 1.6, 0.4, 'inferno'),
+("Cobalt Hook", 4, 3, 2, 12.7, 1.1, 0.5, 'cobalt'),
+("Venom Fang", 5, 4, 3, 13.4, 1.3, 0.6, 'venom'),
+("Twilight Talon", 1, 2, 1, 10.8, 1.9, 0.7, 'twilight'),
+("Mystic Hold", 2, 1, 2, 11.3, 1.5, 0.2, 'mystic'),
+("Shimmer Fang", 3, 5, 3, 14.0, 1.0, 0.3, 'shimmer'),
+("Arcane Spire", 4, 3, 1, 9.7, 1.6, 0.4, 'arcane'),
+("Celestial Grip", 5, 2, 2, 15.1, 1.8, 0.5, 'celestial');
 
 -- Insert data into ORDER
 INSERT INTO `ORDER` (dateOrder, idUser) VALUES 
@@ -185,3 +220,11 @@ WHERE idClient = 1;
 
 
 SELECT * FROM `ORDER`;
+
+SELECT * FROM HOLD;
+
+SELECT * FROM HOLD
+WHERE HOLD.holdName LIKE '%dragon%'
+;
+
+SELECT * FROM CLIENT;

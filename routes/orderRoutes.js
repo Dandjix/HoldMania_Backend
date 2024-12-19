@@ -98,6 +98,9 @@ router.patch('/lines',orderIsNotSent,(req,res)=>
 {
     const {idOrder,idHold,quantity} = req.query
 
+    console.log(idOrder, idHold, quantity);
+    
+
     conn.query(
     `UPDATE ORDER_LINE
     SET quantity=?

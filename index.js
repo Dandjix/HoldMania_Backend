@@ -10,7 +10,7 @@ const orderRoutes = require('./routes/orderRoutes')
 const userRoutes = require('./routes/userRoutes')
 
 app.use(express.json())
-const host = '192.168.189.7'; 
+const host = '172.20.10.3'; 
   
 app.listen(port, host,() => {
     console.log(`listening on port ${port}`);
