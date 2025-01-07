@@ -8,6 +8,8 @@ const port = 3000
 const holdRoutes = require('./routes/holdRoutes')
 const orderRoutes = require('./routes/orderRoutes')
 const userRoutes = require('./routes/userRoutes')
+const colorRoutes = require('./routes/colorRoutes')
+const clientLevelRoutes = require('./routes/clientLevelRoutes')
 
 app.use(express.json())
 const host = '172.20.10.3'; 
@@ -20,3 +22,5 @@ app.listen(port, host,() => {
 app.use('/holds',holdRoutes)
 app.use('/orders',orderRoutes)
 app.use('/users',userRoutes)
+app.use('/colors',colorRoutes)
+app.use('/levels',clientLevelRoutes)

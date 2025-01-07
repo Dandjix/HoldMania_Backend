@@ -23,3 +23,5 @@ router.get('/',(req,res) => {
         return
     }
 })
+
+module.exports = router
