@@ -146,8 +146,7 @@ INSERT INTO HOLD (holdName, idHoldType, idHoldColor, idClientLevel,price, weight
 INSERT INTO `ORDER` (dateOrder, idUser) VALUES 
 ('2024-12-01', 1),
 ('2024-12-02', 2),
-('2024-12-03', 3),
-('2024-12-01', 3);
+('2024-12-03', 3);
 
 -- Insert data into ORDER_LINE
 INSERT INTO ORDER_LINE (idOrder, idHold, quantity) VALUES 
@@ -155,8 +154,7 @@ INSERT INTO ORDER_LINE (idOrder, idHold, quantity) VALUES
 (1, 2,2),
 (2, 3,3),
 (2, 4,4),
-(3, 5,5),
-(4, 1,6);
+(3, 5,5);
 
 
 -- selects

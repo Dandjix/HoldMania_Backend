@@ -12,7 +12,7 @@ const colorRoutes = require('./routes/colorRoutes')
 const clientLevelRoutes = require('./routes/clientLevelRoutes')
 
 app.use(express.json())
-const host = '172.20.10.3'; 
+const host = '192.168.74.7'; 
   
 app.listen(port, host,() => {
     console.log(`listening on port ${port}`);
